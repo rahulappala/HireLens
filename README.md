@@ -1,143 +1,415 @@
-# HireLens
+<div align="center">
 
-> Full-Stack AI Recruitment Platform — instant match scoring, ATS auditing, interview preparation, cover letter generation, and job application tracking.
+# 🤖 HireLens
 
-[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev)
-[![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)](https://vitejs.dev)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](https://python.org)
-[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?logo=supabase&logoColor=white)](https://supabase.com)
-[![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](https://docker.com)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+### AI-Powered Recruitment & Job Application Platform
 
-**Live Demo:** [hirelens-alpha.vercel.app](https://hirelens-alpha.vercel.app)
+**CV analysis · Job matching · ATS auditing · Interview preparation · Application tracking**
 
----
+<p>
+  <a href="https://hirelens-alpha.vercel.app">
+    <img src="https://img.shields.io/badge/Live_Demo-2563EB?style=for-the-badge&logo=vercel&logoColor=white" />
+  </a>
+  <a href="https://github.com/azim-haffar/HireLens">
+    <img src="https://img.shields.io/badge/Repository-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+</p>
 
-## Screenshots
+<p>
+  <img src="https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-0.111-009688?style=flat-square&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=111827" />
+  <img src="https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=flat-square&logo=supabase&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-Compose-2496ED?style=flat-square&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/License-MIT-16A34A?style=flat-square" />
+</p>
 
-![Landing Page](screenshots/landing.png)
-![Dashboard](screenshots/dashboard.png)
-![Analysis](screenshots/analysis.png)
-![ATS Checker](screenshots/ats-checker.png)
-![Roast My CV](screenshots/roast.png)
+</div>
 
 ---
 
 ## Overview
 
-HireLens helps job seekers understand exactly how well their CV matches a specific job posting — and what to fix. Upload a PDF CV, paste or scrape a job description, and receive a weighted AI score with a full breakdown across skills, experience, education, and keyword coverage.
+**HireLens** is a full-stack recruitment platform that helps job seekers understand how well their CV matches a specific vacancy and what they can improve.
 
-The platform is built as a production-ready full-stack application with authentication, real-time SSE streaming, a drag-and-drop Kanban tracker, multilingual support (EN / DE / ES / DA / TR), and a public "Roast My CV" endpoint — no login required.
+Users can upload a PDF CV, paste or ingest a job posting, and receive structured analysis across skills, experience, education, and keyword coverage.
 
----
+The platform also includes:
 
-## Tech Stack
+- AI-powered match scoring
+- ATS auditing
+- CV comparison
+- interview preparation
+- cover-letter generation
+- application tracking
+- analysis history
+- multilingual support
+- contextual AI chat
 
-| Layer                  | Technology                                                                 |
-|------------------------|----------------------------------------------------------------------------|
-| **Frontend**           | React 18, Vite, Tailwind CSS, react-i18next, Recharts, @dnd-kit           |
-| **Backend**            | Python 3.11, FastAPI, SlowAPI (rate limiting), pdfplumber, BeautifulSoup4  |
-| **AI**                 | Groq API — LLaMA 3.3 70B (primary), LLaMA 3 8B (fallback), LLaMA 3.1 8B  |
-| **Database**           | Supabase (PostgreSQL + Row-Level Security + Auth)                          |
-| **Cache / Rate Limit** | Redis                                                                      |
-| **Deployment**         | Vercel (frontend), Render (backend), Docker Compose (local)                |
-
----
-
-## Features
-
-| #  | Feature                    | Description                                                                        |
-|----|----------------------------|------------------------------------------------------------------------------------|
-| 1  | **Authentication**         | Email/password + Google OAuth via Supabase                                         |
-| 2  | **CV Upload & Parsing**    | PDF upload → pdfplumber text extraction → Groq structured JSON                     |
-| 3  | **Job Ingestion**          | URL scraping (BeautifulSoup4) or paste → Groq extraction                           |
-| 4  | **Match Scoring**          | Weighted AI score: skills 35 %, experience 25 %, education 15 %, keywords 25 %    |
-| 5  | **ATS Audit**              | 10-rule automated check with severity levels (critical / warning / info)           |
-| 6  | **AI Score Explanation**   | SSE-streamed plain-English breakdown of the match score                            |
-| 7  | **Interview Preparation**  | 10 role-specific questions with STAR answer frameworks                             |
-| 8  | **Cover Letter Generator** | One-click tailored cover letter with subject line                                  |
-| 9  | **CV Comparison**          | Side-by-side score diff between two CV versions against the same job               |
-| 10 | **Application Tracker**    | Drag-and-drop Kanban: Saved → Applied → Interview → Offer → Rejected → Ghosted    |
-| 11 | **History & Trends**       | Searchable analysis history with a Recharts score trend chart                      |
-| 12 | **Roast My CV**            | Public, rate-limited (3 / hour / IP) brutal AI feedback — no login required       |
-| 13 | **AI Chat**                | Floating SSE chat panel scoped to the current CV + job analysis                    |
-| 14 | **Light / Dark Mode**      | Tailwind class strategy (`html.dark`), persisted in localStorage                   |
-| 15 | **Internationalisation**   | EN / DE / ES / DA / TR via react-i18next                                           |
+The application combines a **React frontend**, **FastAPI backend**, **Supabase**, **Redis**, and **Groq-hosted LLMs**, with deployment through **Vercel and Render**.
 
 ---
 
-## Architecture
+## 📸 Screenshots
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### Landing
+
+<img src="screenshots/landing.png" alt="HireLens landing page" />
+
+</td>
+<td width="50%" valign="top">
+
+### Dashboard
+
+<img src="screenshots/dashboard.png" alt="HireLens dashboard" />
+
+</td>
+</tr>
+
+<tr>
+<td width="50%" valign="top">
+
+### Job Analysis
+
+<img src="screenshots/analysis.png" alt="HireLens CV and job analysis" />
+
+</td>
+<td width="50%" valign="top">
+
+### ATS Checker
+
+<img src="screenshots/ats-checker.png" alt="HireLens ATS checker" />
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+
+### Roast My CV
+
+<img src="screenshots/roast.png" width="80%" alt="HireLens Roast My CV page" />
+
+</div>
+
+---
+
+## ✨ Core Features
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 📄 CV & Job Analysis
+
+- PDF CV upload and parsing
+- Job description ingestion
+- Job URL scraping
+- Structured CV/job extraction
+- Weighted match scoring
+- Skills and keyword coverage
+- Education and experience analysis
+
+</td>
+<td width="50%" valign="top">
+
+### 🎯 Application Support
+
+- ATS compliance audit
+- Role-specific interview questions
+- STAR answer frameworks
+- Tailored cover-letter generation
+- CV-to-CV comparison
+- Analysis history and trends
+
+</td>
+</tr>
+
+<tr>
+<td width="50%" valign="top">
+
+### 📋 Job Tracking
+
+- Drag-and-drop Kanban board
+- Saved
+- Applied
+- Interview
+- Offer
+- Rejected
+- Ghosted
+
+</td>
+<td width="50%" valign="top">
+
+### 🤖 AI Features
+
+- SSE-streamed explanations
+- Contextual AI chat
+- Public CV feedback endpoint
+- Multi-model fallback chain
+- Structured LLM outputs
+- Rate-limited public features
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🧠 Match Scoring
+
+HireLens calculates a weighted job-match score using four categories:
+
+| Category | Weight |
+|---|---:|
+| Skills | **35%** |
+| Experience | **25%** |
+| Education | **15%** |
+| Keywords | **25%** |
+
+The score is accompanied by a detailed AI-generated explanation streamed to the frontend using **Server-Sent Events (SSE)**.
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart LR
+
+    U[User]
+
+    subgraph Frontend
+        R[React 18]
+        V[Vite]
+        T[Tailwind CSS]
+    end
+
+    subgraph Backend
+        F[FastAPI]
+        P[PDF Parsing]
+        S[Job Scraping]
+        RL[Rate Limiting]
+    end
+
+    subgraph Data
+        SB[(Supabase PostgreSQL)]
+        AU[Supabase Auth]
+        RD[(Redis)]
+    end
+
+    subgraph AI
+        G[Groq API]
+        M1[LLaMA 3.3 70B]
+        M2[LLaMA 3 8B]
+        M3[LLaMA 3.1 8B]
+    end
+
+    U --> R
+    R -->|HTTP / SSE| F
+
+    F --> P
+    F --> S
+    F --> RL
+
+    F --> SB
+    F --> AU
+    F --> RD
+
+    F --> G
+
+    G --> M1
+    M1 -. fallback .-> M2
+    M2 -. fallback .-> M3
+```
+
+### Request flow
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│                         HireLens                             │
-│                                                              │
-│  ┌──────────────┐    HTTP / SSE   ┌──────────────────────┐  │
-│  │   Frontend   │◄───────────────►│   Backend (FastAPI)  │  │
-│  │ React + Vite │                 │   Python 3.11        │  │
-│  │ Tailwind CSS │                 │   SlowAPI            │  │
-│  │ react-i18next│                 │   pdfplumber         │  │
-│  │ Recharts     │                 │   BeautifulSoup4     │  │
-│  │ @dnd-kit     │                 └──────────┬───────────┘  │
-│  └──────────────┘                            │              │
-│                                              │              │
-│  ┌───────────────────────────────────────────┼────────────┐ │
-│  │            External Services              │            │ │
-│  │                                           │            │ │
-│  │  ┌─────────────┐  ┌──────────┐  ┌────────▼─────────┐  │ │
-│  │  │  Supabase   │  │  Redis   │  │    Groq API      │  │ │
-│  │  │ PostgreSQL  │  │  Cache   │  │ llama-3.3-70b    │  │ │
-│  │  │ Auth + RLS  │  │ Rate Lmt │  │ llama3-8b-8192   │  │ │
-│  │  │  Storage    │  └──────────┘  │ llama-3.1-8b     │  │ │
-│  │  └─────────────┘                └──────────────────┘  │ │
-│  └────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────┘
+User
+  │
+  ▼
+React / Vite
+  │
+  ├── REST requests
+  └── SSE streams
+  │
+  ▼
+FastAPI
+  │
+  ├── CV parsing
+  ├── Job ingestion
+  ├── ATS analysis
+  ├── Match scoring
+  ├── Interview preparation
+  └── AI chat
+  │
+  ├──────────────► Supabase
+  │                 PostgreSQL
+  │                 Auth / RLS
+  │
+  ├──────────────► Redis
+  │                 Cache / rate limiting
+  │
+  └──────────────► Groq API
+                    LLM inference
 ```
 
 ---
 
-## Quick Start
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React 18, Vite, Tailwind CSS, react-i18next, Recharts, @dnd-kit |
+| **Backend** | Python 3.11, FastAPI, SlowAPI, pdfplumber, BeautifulSoup4 |
+| **AI** | Groq API, LLaMA models |
+| **Database** | Supabase / PostgreSQL |
+| **Authentication** | Supabase Auth, Google OAuth |
+| **Security / Data** | Row-Level Security |
+| **Cache / Rate Limit** | Redis |
+| **Streaming** | Server-Sent Events |
+| **Deployment** | Vercel, Render |
+| **Local Infrastructure** | Docker Compose |
+
+---
+
+## ⚙️ Engineering Highlights
+
+### Real-Time AI Streaming
+
+Long-form AI responses are streamed from the FastAPI backend to the frontend using **SSE**, allowing explanations and AI chat responses to appear progressively instead of waiting for the full model response.
+
+### Supabase Authentication & RLS
+
+Authentication is handled through **Supabase**, supporting:
+
+- email/password authentication
+- Google OAuth
+- PostgreSQL persistence
+- Row-Level Security
+
+### Public Rate-Limited Endpoint
+
+The public **Roast My CV** feature works without authentication while using rate limiting to reduce abuse.
+
+```text
+3 requests / hour / IP
+```
+
+### Application Tracker
+
+The tracker uses a drag-and-drop Kanban interface:
+
+```text
+Saved
+  ↓
+Applied
+  ↓
+Interview
+  ↓
+Offer
+
+Rejected / Ghosted
+```
+
+### Multilingual Interface
+
+HireLens currently supports:
+
+`English` · `German` · `Spanish` · `Danish` · `Turkish`
+
+using `react-i18next`.
+
+---
+
+## 🤖 AI Model Fallback
+
+The backend uses a fallback chain so the application can switch models if the preferred option is unavailable.
+
+```text
+llama-3.3-70b-versatile
+          │
+          ▼
+    llama3-8b-8192
+          │
+          ▼
+ llama-3.1-8b-instant
+```
+
+| Priority | Model | Role |
+|---|---|---|
+| 1 | `llama-3.3-70b-versatile` | Primary |
+| 2 | `llama3-8b-8192` | Fallback |
+| 3 | `llama-3.1-8b-instant` | Final fallback |
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
+You need:
+
 - Node.js 18+
 - Python 3.11+
-- Docker & Docker Compose (recommended)
-- A [Supabase](https://supabase.com) project
-- A [Groq](https://console.groq.com) API key
+- Docker + Docker Compose
+- Supabase project
+- Groq API key
 
-### Option A — Docker Compose (recommended)
+---
+
+### Option 1 — Docker Compose
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/azim-haffar/HireLens.git
 cd HireLens
+```
 
-# 2. Configure environment variables
+Configure environment variables:
+
+```bash
 cp backend/.env.example backend/.env
 cp frontend/.env.example frontend/.env
-# Edit both .env files with your keys
+```
 
-# 3. Start all services
+Add your credentials to the `.env` files.
+
+Then start the application:
+
+```bash
 docker-compose up --build
 ```
 
-| Service              | URL                          |
-|----------------------|------------------------------|
-| Frontend             | <http://localhost:5173>      |
-| Backend API          | <http://localhost:8001>      |
-| Interactive API docs | <http://localhost:8001/docs> |
+### Local services
 
-### Option B — Local Development
+| Service | URL |
+|---|---|
+| Frontend | http://localhost:5173 |
+| Backend API | http://localhost:8001 |
+| Swagger / API Docs | http://localhost:8001/docs |
+
+---
+
+### Option 2 — Local Development
 
 #### Backend
 
 ```bash
 cd backend
+
 python -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
+source venv/bin/activate
+
+# Windows
+# venv\Scripts\activate
+
 pip install -r requirements.txt
+
 uvicorn app.main:app --reload
 ```
 
@@ -145,120 +417,202 @@ uvicorn app.main:app --reload
 
 ```bash
 cd frontend
+
 npm install
 npm run dev
 ```
 
-### Supabase Setup
+---
 
-1. Create a project at [supabase.com](https://supabase.com)
-2. Run `supabase/migrations.sql` in the SQL Editor
-3. Enable Google OAuth under **Authentication → Providers → Google**
-4. Copy the project URL and keys into `backend/.env` and `frontend/.env`
+## 🗄️ Supabase Setup
+
+1. Create a project at [supabase.com](https://supabase.com).
+2. Open the SQL Editor.
+3. Run:
+
+```text
+supabase/migrations.sql
+```
+
+4. Enable Google OAuth under:
+
+```text
+Authentication
+    ↓
+Providers
+    ↓
+Google
+```
+
+5. Add the project URL and API keys to the backend and frontend environment files.
 
 ---
 
-## Environment Variables
+## 🔐 Environment Variables
 
-### Backend — `backend/.env`
+### Backend
 
-| Variable                    | Description                                             |
-|-----------------------------|---------------------------------------------------------|
-| `GROQ_API_KEY`              | Groq API key — [console.groq.com](https://console.groq.com) |
-| `SUPABASE_URL`              | Supabase project URL                                    |
-| `SUPABASE_ANON_KEY`         | Supabase anon/public key                                |
-| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key (server-side only)            |
-| `RESEND_API_KEY`            | Resend API key for transactional email                  |
-| `REDIS_URL`                 | Redis connection URL (default: `redis://redis:6379`)    |
-| `ENVIRONMENT`               | `development` or `production`                           |
+`backend/.env`
 
-### Frontend — `frontend/.env`
+| Variable | Purpose |
+|---|---|
+| `GROQ_API_KEY` | Groq API access |
+| `SUPABASE_URL` | Supabase project URL |
+| `SUPABASE_ANON_KEY` | Public Supabase API key |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-side Supabase key |
+| `RESEND_API_KEY` | Transactional email |
+| `REDIS_URL` | Redis connection |
+| `ENVIRONMENT` | Development / production mode |
 
-| Variable                 | Description                                          |
-|--------------------------|------------------------------------------------------|
-| `VITE_SUPABASE_URL`      | Supabase project URL                                 |
-| `VITE_SUPABASE_ANON_KEY` | Supabase anon/public key                             |
-| `VITE_API_URL`           | Backend base URL (default: `http://localhost:8001`)  |
+### Frontend
+
+`frontend/.env`
+
+| Variable | Purpose |
+|---|---|
+| `VITE_SUPABASE_URL` | Supabase project URL |
+| `VITE_SUPABASE_ANON_KEY` | Public Supabase key |
+| `VITE_API_URL` | Backend API URL |
+
+> Never commit production API keys or service-role credentials.
 
 ---
 
-## Deployment
+## 🌐 Deployment
 
-### Frontend → Vercel
+### Frontend — Vercel
 
 ```bash
 vercel --cwd frontend
 ```
 
-Add the three `VITE_*` environment variables in the Vercel project dashboard.
+Configure the `VITE_*` environment variables inside the Vercel project.
 
-### Backend → Render
+### Backend — Render
 
-Connect the repository to Render and use the included `render.yaml` Blueprint for automatic setup, or configure manually:
+The backend can be deployed through the included `render.yaml` configuration.
 
-- **Build command:** `pip install -r requirements.txt`
-- **Start command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+Manual configuration:
 
----
+```text
+Build:
+pip install -r requirements.txt
 
-## AI Model Fallback Chain
-
-The backend selects the most capable available model and falls back automatically:
-
-1. `llama-3.3-70b-versatile` — primary, highest quality
-2. `llama3-8b-8192` — fallback
-3. `llama-3.1-8b-instant` — last resort
+Start:
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
 
 ---
 
-## API Reference
+## 🔌 API
 
-Full interactive documentation is available at `/docs` when the backend is running.
+Interactive API documentation is available through FastAPI at:
 
-| Method | Endpoint                 | Description                                     |
-|--------|--------------------------|-------------------------------------------------|
-| `POST` | `/cv/upload`             | Upload and parse a PDF CV                       |
-| `POST` | `/jobs/ingest`           | Ingest a job posting from URL or raw text       |
-| `POST` | `/match/score`           | Compute weighted match score                    |
-| `POST` | `/ats/check`             | Run ATS compliance audit                        |
-| `POST` | `/explain/stream`        | Stream AI score explanation (SSE)               |
-| `POST` | `/interview/generate`    | Generate interview questions                    |
-| `POST` | `/cover-letter/generate` | Generate tailored cover letter                  |
-| `POST` | `/comparison/compare`    | Compare two CV versions                         |
-| `GET`  | `/tracker/applications`  | List tracked job applications                   |
-| `POST` | `/roast/cv`              | Public CV roast — rate-limited, no auth         |
-| `POST` | `/chat/stream`           | Stream AI chat scoped to current analysis (SSE) |
+```text
+/docs
+```
+
+when the backend is running.
+
+### Main endpoints
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `POST` | `/cv/upload` | Upload and parse CV |
+| `POST` | `/jobs/ingest` | Ingest job posting |
+| `POST` | `/match/score` | Generate match score |
+| `POST` | `/ats/check` | Run ATS audit |
+| `POST` | `/explain/stream` | Stream score explanation |
+| `POST` | `/interview/generate` | Generate interview preparation |
+| `POST` | `/cover-letter/generate` | Generate cover letter |
+| `POST` | `/comparison/compare` | Compare CV versions |
+| `GET` | `/tracker/applications` | Retrieve applications |
+| `POST` | `/roast/cv` | Public CV feedback |
+| `POST` | `/chat/stream` | Context-aware AI chat |
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 HireLens/
+│
 ├── backend/
 │   ├── app/
-│   │   ├── routers/        # One file per feature (cv, jobs, match, ats, …)
-│   │   ├── services/       # CV parsing, job scraping, Groq client
-│   │   ├── models/         # Pydantic response schemas
-│   │   └── main.py         # FastAPI app, CORS, rate-limit middleware
+│   │   ├── routers/
+│   │   │   ├── cv
+│   │   │   ├── jobs
+│   │   │   ├── match
+│   │   │   ├── ats
+│   │   │   └── ...
+│   │   │
+│   │   ├── services/
+│   │   │   ├── CV parsing
+│   │   │   ├── Job scraping
+│   │   │   └── Groq client
+│   │   │
+│   │   ├── models/
+│   │   └── main.py
+│   │
 │   ├── requirements.txt
 │   └── Dockerfile
+│
 ├── frontend/
 │   ├── src/
-│   │   ├── components/     # Layout, ScoreGauge, StreamingText, ChatPanel, …
-│   │   ├── pages/          # One file per route
-│   │   ├── hooks/          # useAuth, useTheme
-│   │   ├── lib/            # API client, i18n config, theme helpers
-│   │   └── locales/        # Translation files (en, de, es, da, tr)
-│   ├── public/
-│   └── index.html
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── hooks/
+│   │   ├── lib/
+│   │   └── locales/
+│   │
+│   └── public/
+│
 ├── supabase/
 │   └── migrations.sql
+│
 └── docker-compose.yml
 ```
 
 ---
 
-## License
+## 🎬 Demo
 
-MIT — see [LICENSE](LICENSE) for details.
+<div align="center">
+
+### Try HireLens
+
+<a href="https://hirelens-alpha.vercel.app">
+  <img src="https://img.shields.io/badge/Open_Live_Demo-2563EB?style=for-the-badge&logo=vercel&logoColor=white" />
+</a>
+
+</div>
+
+---
+
+## 📄 License
+
+Distributed under the **MIT License**.
+
+See [`LICENSE`](LICENSE) for details.
+
+---
+
+<div align="center">
+
+### Built by Azim Haffar
+
+Backend · AI Integration · Full-Stack Engineering
+
+<a href="https://azimx.dev">
+  <img src="https://img.shields.io/badge/Portfolio-111827?style=for-the-badge&logo=vercel&logoColor=white" />
+</a>
+
+<a href="https://www.linkedin.com/in/azim-haffar">
+  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+</a>
+
+<a href="https://github.com/azim-haffar">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+</a>
+
+</div>
